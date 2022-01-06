@@ -1,21 +1,30 @@
 package com.site.driver;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.site.constants.FrameworkConstants;
+import com.site.readProperty.ReadProperty;
 
 public class Driver {
+	
+	private Driver() {}
 
-	public static WebDriver driver;
+    public static WebDriver driver;
 	
 	public static void openBrowser() {
 		if(Objects.isNull(driver)) {
 		System.setProperty("webdriver.chrome.driver",FrameworkConstants.CHROMEDRIVERPATH);
 		driver= new ChromeDriver();
-		driver.get("https://google.com");
+		try {
+			driver.get(ReadProperty.readPropertyFile("url"));
+		} catch (IOException e) {
+			System.out.print("Unable to read Property File ..Check the Propery file again");
+			e.printStackTrace();
+		}
 		}
 	}
 	

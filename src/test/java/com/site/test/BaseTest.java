@@ -11,14 +11,14 @@ public class BaseTest {
 	protected BaseTest() {}
 	
 	@BeforeMethod
-	public void init() {
+	protected void init() {
 		Driver.openBrowser();
 		
 	}
 	
 
 	@AfterMethod
-	public void tearDown() {
+	protected void tearDown() {
 		Driver.closeBrowser();
 	}
 	

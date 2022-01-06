@@ -1,17 +1,21 @@
 package com.site.test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.site.driver.Driver;
+import com.site.pages.LoginPage;
 
 public class LoginTest extends BaseTest{
 	
 	@Test
 	public static void loginCase() {
-		Driver.driver.findElement(By.name("q")).sendKeys("Rohit Singh" , Keys.ENTER);
+		LoginPage.loginApplication("Admin", "admin123" );
+		Assert.assertTrue(true);
 	}
 	
-
+	@DataProvider
+    public void getDataForLoginApplication() {
+		
+	}
 }
